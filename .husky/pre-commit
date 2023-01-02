@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo 'Applying ESLINT to your code...'
+echo 'Please wait as this may take some time.'
+
+# Check ESLint Standards
+npm run lint ||
+(
+    echo '❌ Please, run npm run lint and check for code errors.'
+    false;
+)
+
+echo 'Commit approved, no errors found ✅'
+
+npx lint-staged
